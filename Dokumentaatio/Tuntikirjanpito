@@ -1,22 +1,2 @@
 Vähintään päivämäärä, käytetty aika ja ajankäytön kohde
 
-17.tammikuuta, 2,5h Luotu testit Lauseenkomponentti paketin luokille ja Luokalle Lause. 
- 	       1h Luotu Lauseenkomponentti luokat sekä Luokka Lause.
-
-21.tammikuuta, 1h Aloitettu Luokkaa Generaattori
-
-22.tammikuuta, 4,5h Työstetty luokkaa Generaattori, Lause ja pakkauksen generoijat Luokkia Alilausegeneroija ja Generoijaluoja.
- 	       Myös Luotu laskurit paketin luokat Sanahyppyri, SuljeLaskuri "()" ja Tyhjähyppyri. Luotu Propositiotaulu luokka. Aloitettu määrittelyvaiheen kaavion teko.
-
-23.tammikuuta, 4h Jatkettu luokkaa Generaattori, sekä muokattu sen käyttämiä luokkia. Luotu luokka Totuustaulu ja pakkaukseen taulut luokka Vaihtoehtotaulu. Luotu testit pakkausten laskurit ja taulut luokille. Jatkettu määrittelyvaiheen kaaviota.
-
-24.tammikuuta, 5,5h Refactoroitu generoijat pakkauksen luokkia, ja luotu staattisia metodeja sisältävä luokka Generoijatoiminnot. 
-
-27.tammikuuta, 2h luotu testit luokille Generoijatoiminnot ja Alilausegeneroija.
-
-28.tammikuuta, 2h luotu testit luokille AlilauseNegaatiogeneroija, Sulkujenlukija, TyhjienSulkujenlukija ja Generoijaluoja.
-
-29.tammikuuta, 3,5h Päivitetty kaaviota. Aloitettu ui pakkauksessa Kayttoliittyma, LisaaMerkki ja GeneroiTotuustaulu luokkia. Muokattu luokkia lause ja Totuustaulu.
-
-4. helmikuuta, 5h Luotu pakkaukseen ui luokka GeneroiPaattelynTarkistus ja domainiin luokka PaattelynTarkistaja. Muokattu luokkia Lause, Generaattori, Totuustaulu, Alilausegeneroija, AlilauseNegaatiogeneroija, Generoijaluoja, Generoijatoiminnot ja Kayttoliittyma.
-			0,33h  Luotu pakkaukseen syntaksinlukijat luokka TyhjienSulkuvalienLukija.
