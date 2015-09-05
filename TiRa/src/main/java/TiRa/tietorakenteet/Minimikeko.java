@@ -17,17 +17,15 @@ public class Minimikeko {
         this.koko = 0;
         this.kaytettykoko = 0;
     }
+    
 
     public void syota(Solmu i) {
         this.kaytettykoko++;
         int nykyinenpaikka = this.kaytettykoko;
-        int vanhempi = 0;
-        if (this.keko[this.vanhempi(nykyinenpaikka)] != null){
-            vanhempi = this.keko[this.vanhempi(nykyinenpaikka)].annaEtaisyys();
-        }
-        while (nykyinenpaikka > 1 && i.annaEtaisyys() < vanhempi) {
+        while (nykyinenpaikka > 1 && i.annaEtaisyys() < this.palautaVanhemmanArvo(nykyinenpaikka)) {
             this.keko[nykyinenpaikka] = this.keko[this.vanhempi(nykyinenpaikka)];
-            nykyinenpaikka = this.vanhempi(nykyinenpaikka);            
+            nykyinenpaikka = this.vanhempi(nykyinenpaikka);  
+
         }
         this.keko[nykyinenpaikka] = i;
     }
@@ -57,11 +55,19 @@ public class Minimikeko {
         this.keota(1);
         return pienin;
         }
-        return 0;
+        return -1;
     }
 
     public int vanhempi(int paikka) {
         return (int) Math.floor(paikka / 2);
+    }
+    
+    public int palautaVanhemmanArvo(int nykyinenpaikka){
+        int vanhemmanarvo= -1;
+        if (this.keko[this.vanhempi(nykyinenpaikka)] != null){
+            vanhemmanarvo = this.keko[this.vanhempi(nykyinenpaikka)].annaEtaisyys();
+        }
+        return vanhemmanarvo;
     }
 
     public int vasen(int paikka) {
@@ -84,7 +90,7 @@ public class Minimikeko {
         int pienin;
 
         if (o <= this.kaytettykoko) {
-            if (this.keko[i].annaEtaisyys() < this.keko[o].annaEtaisyys()) {
+            if (this.keko[v].annaEtaisyys() < this.keko[o].annaEtaisyys()) {
                 pienin = v;
             } else {
                 pienin = o;
