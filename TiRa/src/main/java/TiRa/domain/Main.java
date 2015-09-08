@@ -44,17 +44,20 @@ public class Main {
         System.out.println(k.tulostaKeko());
         k.syota(g);
         System.out.println(k.tulostaKeko());
+        k.vahennaSolmunEtaisyyttaKeossa(a, 0);
+        System.out.println(k.tulostaKeko());
         k.syota(h);
         System.out.println(k.tulostaKeko());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
-        System.out.println(k.poistaJaAnnaPienin());
+        System.out.println(k.tulostaPaikat());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.tulostaPaikat());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
+        System.out.println(k.poistaJaAnnaPienin().annaEtaisyys());
             
     }
     
