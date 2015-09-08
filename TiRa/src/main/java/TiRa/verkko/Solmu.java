@@ -26,7 +26,7 @@ public class Solmu {
     }        
     
     public void asetaEtaisyys(int e){
-        this.etaisyys = e;
+        this.etaisyys = e + this.vaativuus;
     }
     public int annaEtaisyys(){
         return this.etaisyys;

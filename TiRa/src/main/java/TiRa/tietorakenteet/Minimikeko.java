@@ -123,7 +123,7 @@ public class Minimikeko {
     }
     
     public void vahennaSolmunEtaisyyttaKeossa(Solmu solmu, int etaisyys){
-       if (etaisyys < solmu.annaEtaisyys()){
+       if (etaisyys + solmu.annaVaativuus() < solmu.annaEtaisyys()){
            solmu.asetaEtaisyys(etaisyys);
            int paikka = solmu.annaPaikkaKeossa();
            while(paikka > 1 && etaisyys < this.keko[this.vanhempi(paikka)].annaEtaisyys()){

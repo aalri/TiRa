@@ -18,6 +18,7 @@ public class Verkko {
         return this.verkko;
     }
     public void asetaLahto(Solmu solmu){
+        solmu.etaisyys = 0;
         this.lahto = solmu;
     }
     public Solmu annaLahto(){
@@ -25,8 +26,8 @@ public class Verkko {
     }
     
     public Solmu annaSolmu(int x, int y){
-        if (-1 < x && x < this.verkko.length && -1 < y && y > this.verkko[0].length){
-            return this.verkko[x][y];
+        if (-1 < x && x < this.verkko.length && -1 < y && y < this.verkko[0].length){    
+            return this.verkko[x][y]; 
         }
         return null;
     }
