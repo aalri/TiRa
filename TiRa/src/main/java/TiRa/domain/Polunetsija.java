@@ -4,6 +4,7 @@ package tira.domain;
 import tira.algoritmi.Astar;
 import tira.verkko.Solmu;
 import tira.verkko.Verkko;
+import tira.verkko.Verkkotoiminnot;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Polunetsija {
     
     public char[][] etsiPolku(char[][] maasto){
         Astar astar = new Astar();
-        Verkko verkko = astar.luoVerkko(maasto);
+        Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
         Solmu solmu = astar.etsiLyhin(verkko);      
         while (solmu != verkko.annaLahto()){
             maasto[solmu.annaX()][solmu.annaY()] = 'O';

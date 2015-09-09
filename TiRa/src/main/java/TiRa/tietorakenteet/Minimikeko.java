@@ -1,6 +1,7 @@
 package tira.tietorakenteet;
 
 import tira.verkko.Solmu;
+import tira.verkko.Verkko;
 
 /**
  *
@@ -29,6 +30,16 @@ public class Minimikeko {
         }
         this.keko[nykyinenpaikka] = i;
         i.asetaPaikkaKeossa(nykyinenpaikka);
+    }
+    
+    public void syotaKaikki(Verkko verkko){
+        for (int i = 0; i < verkko.annaVerkko().length; i++) {
+            for (int j = 0; j < verkko.annaVerkko()[0].length; j++) {
+                if (verkko.annaSolmu(i, j).annaKuljettava()) {
+                    this.syota(verkko.annaSolmu(i, j));
+                }
+            }
+        }
     }
 
     public Solmu annaPienin() {

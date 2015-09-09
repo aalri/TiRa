@@ -12,7 +12,7 @@ public class Solmu {
     int vaativuus;
     int paikkakeossa;
     boolean maali;
-    boolean kuljettava;
+    boolean kuljettava;    
     Solmu reitti;
     
     public Solmu(int x, int y){
@@ -22,6 +22,7 @@ public class Solmu {
         this.etaisyys = Integer.MAX_VALUE;
         this.maali = false;
         this.paikkakeossa = -1;
+        this.vaativuus = 0;
         
     }        
     
@@ -69,5 +70,12 @@ public class Solmu {
         return this.maali;
     }
     
+    public void asetaEiKuljettavaksi(){
+        this.kuljettava = false;
+    }
+    
+    public boolean annaKuljettava(){
+        return this.kuljettava;
+    }
     
 }

@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.mycompany</groupId>
+  <groupId>tira</groupId>
   <artifactId>TiRa</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -22,4 +22,47 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+                <version>2.5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.6</version>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>0.30</version>                
+                <configuration>
+                    <targetClasses>
+                        <param>tira.algoritmi.Astar</param>
+                        <param>tira.domain.Polunetsija</param>
+                        <param>tira.lukijat.Tiedostonlukija</param>
+                        <param>tira.tietorakenteet.Minimikeko</param>
+                        <param>tira.verkko.Verkkotoiminnot</param>
+                        <param>tira.verkko.Solmu</param>
+                        <param>tira.verkko.Verkko</param>            
+                    </targetClasses>
+                    <targetTests>
+                        <param>tira.algoritmi.AstarTest</param>
+                        <param>tira.domain.PolunetsijaTest</param>
+                        <param>tira.lukijat.TiedostonlukijaTest</param>
+                        <param>tira.tietorakenteet.MinimikekoTest</param>
+                        <param>tira.verkko.VerkkotoiminnotTest</param>
+                        <param>tira.verkko.SolmuTest</param>
+                        <param>tira.verkko.VerkkoTest</param>   
+                    </targetTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
