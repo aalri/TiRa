@@ -7,13 +7,22 @@ import tira.verkko.Verkko;
 import tira.verkko.Verkkotoiminnot;
 
 /**
- *
+ * Luokka kirjaa lyhimmän polun maastoon.
+ * 
  * @author Riku
+ * 
  */
 public class Polunetsija {
     
     
-    
+/**
+ * Metodi laittaa Astar luokan etsimään lyhimmän polun lähdöstä maaliin syntaksia vastaavasta merkeistä tehdystä maastosta.
+ * Tämän jälkeen kirjaa polun maastoon ja palauttaa sen.
+ *
+ * @param   maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
+ * 
+ * @return maasto, mihin on kirjattu lyhin polku.
+ */
     
     public char[][] etsiPolku(char[][] maasto){
         Astar astar = new Astar();
@@ -25,6 +34,15 @@ public class Polunetsija {
         }       
         return maasto;
     }
+    
+/**
+ * Metodi muuntaa maasto taulukon merkkijonoksi ja palauttaa sen.
+ *
+ * @param   maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
+ * 
+ * @return merkkijono joka vastaa maastoa.
+ */
+    
     
     public String tulostaMaasto(char[][] maasto){
         String tulos = "";

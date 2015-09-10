@@ -1,4 +1,3 @@
-
 package tira.verkko;
 
 /**
@@ -6,9 +5,15 @@ package tira.verkko;
  * @author Riku
  */
 public class Verkkotoiminnot {
-    
+
+    /**
+     * Metodi luo verkon maastosta tekemällä solmun, mikä vastaa jokaista merkkiä.
+     * @param maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
+     *
+     * @return Verkko joka sisältää kaikki maaston merkeistä tehdyt solmut, ja lähtösolmun.
+     */
     public static Verkko luoVerkko(char[][] maasto) {
-        Verkko uusiverkko = new Verkko();        
+        Verkko uusiverkko = new Verkko();
         Solmu[][] solmutaulu = new Solmu[maasto.length][maasto[0].length];
 
         for (int i = 0; i < maasto.length; i++) {

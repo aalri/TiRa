@@ -2,7 +2,7 @@
 package tira.verkko;
 
 /**
- *
+ * Luokka esittää tietorakennetta verkko.
  * @author Riku
  */
 public class Verkko {

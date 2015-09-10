@@ -2,7 +2,7 @@
 package tira.verkko;
 
 /**
- *
+ * Luokka esittää verkon solmuja.
  * @author Riku
  */
 public class Solmu {
@@ -24,7 +24,7 @@ public class Solmu {
         this.paikkakeossa = -1;
         this.vaativuus = 0;
         
-    }        
+    }                
     
     public void asetaEtaisyys(int e){
         this.etaisyys = e + this.vaativuus;
