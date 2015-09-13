@@ -31,7 +31,7 @@ public class Astar {
                 return solmu;
             }
             naapuri = verkko.annaSolmu(solmu.annaX() - 1, solmu.annaY());
-            if (naapuri != null) {
+            if (naapuri != null) {                
                 this.tarkistaOnkoNopeampi(solmu, naapuri, keko);
             }
             naapuri = verkko.annaSolmu(solmu.annaX() + 1, solmu.annaY());

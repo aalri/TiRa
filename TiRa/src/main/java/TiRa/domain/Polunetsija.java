@@ -1,50 +1,73 @@
-
 package tira.domain;
 
 import tira.algoritmi.Astar;
+import tira.lukijat.Syotteenlukija;
+import tira.lukijat.Tiedostonlukija;
+import tira.syntaksinlukija.Tarkastaja;
 import tira.verkko.Solmu;
 import tira.verkko.Verkko;
 import tira.verkko.Verkkotoiminnot;
 
 /**
  * Luokka kirjaa lyhimmän polun maastoon.
- * 
+ *
  * @author Riku
- * 
+ *
  */
 public class Polunetsija {
-    
-    
-/**
- * Metodi laittaa Astar luokan etsimään lyhimmän polun lähdöstä maaliin syntaksia vastaavasta merkeistä tehdystä maastosta.
- * Tämän jälkeen kirjaa polun maastoon ja palauttaa sen.
- *
- * @param   maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
- * 
- * @return maasto, mihin on kirjattu lyhin polku.
- */
-    
-    public char[][] etsiPolku(char[][] maasto){
+
+    public void aloita() {
+        Tiedostonlukija t = new Tiedostonlukija();
+        Syotteenlukija s = new Syotteenlukija();
+        Tarkastaja tarkastaja = new Tarkastaja();
+        String teksti;
+        char[][] maasto;
+        
+        if (s.annetaanTiedosto()) {
+            teksti = t.lueTiedosto("maasto.txt");
+            System.out.println(teksti);
+            if (tarkastaja.Tarkista(teksti)) {
+                maasto = s.muutaMaastoksi(teksti);
+
+                maasto = this.etsiPolku(maasto);
+                System.out.println(this.tulostaMaasto(maasto));
+
+            } else {
+                System.out.println(tarkastaja.annaVirhe());
+            }
+        }
+
+        System.out.println("Loppu");
+    }
+
+    /**
+     * Metodi laittaa Astar luokan etsimään lyhimmän polun lähdöstä maaliin
+     * syntaksia vastaavasta merkeistä tehdystä maastosta. Tämän jälkeen kirjaa
+     * polun maastoon ja palauttaa sen.
+     *
+     * @param maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
+     *
+     * @return maasto, mihin on kirjattu lyhin polku.
+     */
+    public char[][] etsiPolku(char[][] maasto) {
         Astar astar = new Astar();
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
-        Solmu solmu = astar.etsiLyhin(verkko);      
-        while (solmu != verkko.annaLahto()){
+        Solmu solmu = astar.etsiLyhin(verkko);
+        while (solmu != verkko.annaLahto()) {
             maasto[solmu.annaX()][solmu.annaY()] = 'O';
-            solmu = solmu.annaReitti();            
-        }       
+            solmu = solmu.annaReitti();
+        }
         return maasto;
     }
-    
-/**
- * Metodi muuntaa maasto taulukon merkkijonoksi ja palauttaa sen.
- *
- * @param   maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
- * 
- * @return merkkijono joka vastaa maastoa.
- */
-    
-    
-    public String tulostaMaasto(char[][] maasto){
+
+    /**
+     * Metodi muuntaa maasto taulukon merkkijonoksi ja palauttaa sen.
+     *
+     * @param maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
+     *
+     * @return merkkijono joka vastaa maastoa.
+     */
+    public String tulostaMaasto(char[][] maasto) {
         String tulos = "";
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[0].length; j++) {
@@ -54,5 +77,5 @@ public class Polunetsija {
         }
         return tulos;
     }
-    
+
 }

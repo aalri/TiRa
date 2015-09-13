@@ -9,8 +9,9 @@ public class Solmu {
     int x;
     int y;
     int etaisyys;
+    int etaisyysmaalista;
     int vaativuus;
-    int paikkakeossa;
+    int paikkakeossa;    
     boolean maali;
     boolean kuljettava;    
     Solmu reitti;
@@ -23,15 +24,22 @@ public class Solmu {
         this.maali = false;
         this.paikkakeossa = -1;
         this.vaativuus = 0;
+        this.etaisyysmaalista = 0;
         
     }                
     
     public void asetaEtaisyys(int e){
-        this.etaisyys = e + this.vaativuus;
+        this.etaisyys = e + this.vaativuus + this.etaisyysmaalista;
     }
     public int annaEtaisyys(){
         return this.etaisyys;
     }
+    public void asetaEtaisyysMaalista(int e){
+        this.etaisyysmaalista = e;
+    }
+    public int annaEtaisyysMaalista(){
+        return this.etaisyysmaalista;
+    }    
     public void asetaVaativuus(int vaativuus){
         this.vaativuus = vaativuus;
     }
