@@ -45,12 +45,12 @@
                 <configuration>
                     <targetClasses>
                         <param>tira.algoritmi.Astar</param>
-                        <param>tira.domain.Polunetsija</param>
                         <param>tira.lukijat.Tiedostonlukija</param>
                         <param>tira.tietorakenteet.Minimikeko</param>
                         <param>tira.verkko.Verkkotoiminnot</param>
                         <param>tira.verkko.Solmu</param>
-                        <param>tira.verkko.Verkko</param>            
+                        <param>tira.verkko.Verkko</param>       
+                        <param>tira.syntaksinlukija.Tarkastaja</param>     
                     </targetClasses>
                     <targetTests>
                         <param>tira.algoritmi.AstarTest</param>
@@ -60,6 +60,7 @@
                         <param>tira.verkko.VerkkotoiminnotTest</param>
                         <param>tira.verkko.SolmuTest</param>
                         <param>tira.verkko.VerkkoTest</param>   
+                        <param>tira.syntaksinlukija.TarkastajaTest</param>     
                     </targetTests>
                 </configuration>
             </plugin>

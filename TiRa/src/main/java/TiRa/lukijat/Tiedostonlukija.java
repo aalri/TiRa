@@ -26,7 +26,7 @@ public class Tiedostonlukija {
                 rivi = this.lukija.readLine();
             }
         } catch (IOException e) {
-            
+            return null;
         }        
         return sisalto;
     }    

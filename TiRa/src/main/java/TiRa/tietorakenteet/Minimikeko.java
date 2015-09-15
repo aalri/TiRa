@@ -16,7 +16,7 @@ public class Minimikeko {
     int kaytettykoko;
 
     public Minimikeko() {
-        this.keko = new Solmu[254];
+        this.keko = new Solmu[65536];
         this.koko = 0;
         this.kaytettykoko = 0;
     }

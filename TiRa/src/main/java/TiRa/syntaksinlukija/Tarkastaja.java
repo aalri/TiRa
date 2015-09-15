@@ -10,8 +10,16 @@ public class Tarkastaja {
 
     String virhe;
 
+    /**
+     * Metodi käy läpi kaikki syntaksin selvitykset ja palauttaa niiden yhteisen
+     * tuloksen.
+     *
+     * @param teksti String josta tarkistetaan että on syntaksia vastaava
+     *
+     * @return totuusarvo syntaksin vastaavuudesta
+     */
     public boolean Tarkista(String teksti) {
-        if (!symmetrinenTeksti(teksti)) {
+        if (!yhtaMontaRiviaKuinLeveyttaTeksti(teksti)) {
             this.virhe = "Merkkejä ei olla muodostettu tekstitiedostoon neliöllisesti!";
             return false;
         }
@@ -27,7 +35,14 @@ public class Tarkastaja {
         return true;
     }
 
-    public boolean symmetrinenTeksti(String teksti) {
+    /**
+     * Metodi selvittää onko tekstissä yhtä monta riviä kuin kirjainta rivillä
+     *
+     * @param teksti String josta tarkistetaan että kelpaako
+     *
+     * @return totuusarvo selvityksestä
+     */
+    public boolean yhtaMontaRiviaKuinLeveyttaTeksti(String teksti) {
         Scanner lukija = new Scanner(teksti);
         int pituus = lukija.nextLine().length();
         while (lukija.hasNext()) {
@@ -38,6 +53,13 @@ public class Tarkastaja {
         return true;
     }
 
+    /**
+     * Metodi selvittää onko tekstissä vain yksi lähtö merkki
+     *
+     * @param teksti String josta tarkistetaan että kelpaako
+     *
+     * @return totuusarvo selvityksestä
+     */
     public boolean loytyyVainYksiLahto(String teksti) {
         boolean tulos = false;
         Scanner lukija = new Scanner(teksti);
@@ -57,6 +79,13 @@ public class Tarkastaja {
         return tulos;
     }
 
+    /**
+     * Metodi selvittää onko tekstissä vain yksi maali merkki
+     *
+     * @param teksti String josta tarkistetaan että kelpaako
+     *
+     * @return totuusarvo selvityksestä
+     */
     public boolean loytyyVainYksiMaali(String teksti) {
         boolean tulos = false;
         Scanner lukija = new Scanner(teksti);
@@ -71,14 +100,16 @@ public class Tarkastaja {
                         return false;
                     }
                 }
-            }            
+            }
         }
-    return tulos;
+        return tulos;
     }
-    
 
-    
-
+    /**
+     * Metodi palauttaa virhetekstin
+     *
+     * @return virheteksti
+     */
     public String annaVirhe() {
         return this.virhe;
     }

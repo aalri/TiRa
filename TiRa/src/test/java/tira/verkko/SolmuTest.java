@@ -39,6 +39,16 @@ public class SolmuTest extends TestCase {
         }
     }
 
+    public void testSolmuEtaisyymaalista() {
+        this.solmu = new Solmu(1, 1);
+        for (int i = 0; i < 10; i++) {
+            this.solmu.asetaEtaisyysMaalista(i);
+            assertEquals(i, this.solmu.etaisyysmaalista);
+            assertEquals(i, this.solmu.annaEtaisyysMaalista());
+
+        }
+    }
+
     public void testSolmuReitti() {
         this.solmu = new Solmu(1, 1);
         Solmu uusisolmu = new Solmu(0, 1);
@@ -70,6 +80,21 @@ public class SolmuTest extends TestCase {
             assertEquals(i, this.solmu.paikkakeossa);
             assertEquals(i, this.solmu.annaPaikkaKeossa());
 
+        }
+    }
+
+    public void testSolmuEtaisyysVaativuudenJaEtaisyydemaalistaKanssa() {
+        this.solmu = new Solmu(1, 1);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < 10; k++) {
+                    this.solmu.asetaVaativuus(i);                    
+                    this.solmu.asetaEtaisyysMaalista(j); 
+                    this.solmu.asetaEtaisyys(k);
+                    assertEquals(i, this.solmu.vaativuus);
+                    assertEquals(i+j+k, this.solmu.annaEtaisyys());
+                }
+            }
         }
     }
 }

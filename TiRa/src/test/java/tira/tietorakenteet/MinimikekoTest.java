@@ -133,6 +133,60 @@ public class MinimikekoTest extends TestCase{
         assertEquals(sc,this.keko.keko[1]);
     }
     
+    public void testKeotaPelkastaanVasen(){
+        Solmu sa = new Solmu(1,1);
+        Solmu sb = new Solmu(1,1);
+        Solmu sc = new Solmu(1,1);
+        Solmu sd = new Solmu(1,1);
+        
+        sa.asetaEtaisyys(1);
+        sb.asetaEtaisyys(2);
+        sc.asetaEtaisyys(3);
+        sd.asetaEtaisyys(4);
+        
+        this.keko.syota(sa);
+        this.keko.syota(sb);
+        this.keko.syota(sc);
+        this.keko.syota(sd);
+        
+        sb.asetaEtaisyys(7);
+        sd.asetaEtaisyys(4);
+        
+        this.keko.keota(2);
+        
+        assertEquals(sd,this.keko.keko[2]);
+        assertEquals(sc,this.keko.keko[3]);
+        assertEquals(sa,this.keko.keko[1]);
+        assertEquals(sb,this.keko.keko[4]);
+    }
+    
+    public void testKeotaPelkastaanVasenSama(){
+        Solmu sa = new Solmu(1,1);
+        Solmu sb = new Solmu(1,1);
+        Solmu sc = new Solmu(1,1);
+        Solmu sd = new Solmu(1,1);
+        
+        sa.asetaEtaisyys(1);
+        sb.asetaEtaisyys(2);
+        sc.asetaEtaisyys(3);
+        sd.asetaEtaisyys(4);
+        
+        this.keko.syota(sa);
+        this.keko.syota(sb);
+        this.keko.syota(sc);
+        this.keko.syota(sd);
+        
+        sb.asetaEtaisyys(4);
+        sd.asetaEtaisyys(4);
+        
+        this.keko.keota(2);
+        
+        assertEquals(sd,this.keko.keko[4]);
+        assertEquals(sc,this.keko.keko[3]);
+        assertEquals(sa,this.keko.keko[1]);
+        assertEquals(sb,this.keko.keko[2]);
+    }
+    
     public void testKeotaMolemmatSama(){
         Solmu sa = new Solmu(1,1);
         Solmu sb = new Solmu(1,1);

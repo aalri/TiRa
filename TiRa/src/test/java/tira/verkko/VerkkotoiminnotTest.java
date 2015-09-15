@@ -13,7 +13,7 @@ public class VerkkotoiminnotTest extends TestCase {
     Verkko v;
 
     public void testLuoVerkko() {
-        
+
         this.t[0][0] = '.';
         this.v = Verkkotoiminnot.luoVerkko(t);
         assertEquals(1, v.annaSolmu(0, 0).annaVaativuus());
@@ -30,13 +30,13 @@ public class VerkkotoiminnotTest extends TestCase {
         this.v = Verkkotoiminnot.luoVerkko(t);
         assertEquals(4, v.annaSolmu(0, 0).annaVaativuus());
 
-        this.t[0][0] = 'X';        
+        this.t[0][0] = 'X';
         this.v = Verkkotoiminnot.luoVerkko(t);
         assertEquals(true, v.annaSolmu(0, 0).onMaali());
         assertEquals(0, v.annaSolmu(0, 0).annaVaativuus());
 
         this.t[0][0] = 'L';
-        this.v = Verkkotoiminnot.luoVerkko(t);        
+        this.v = Verkkotoiminnot.luoVerkko(t);
         assertEquals(0, v.annaSolmu(0, 0).annaVaativuus());
 
         this.t[0][0] = '#';
@@ -49,5 +49,29 @@ public class VerkkotoiminnotTest extends TestCase {
             this.v = Verkkotoiminnot.luoVerkko(t);
             assertEquals(i, v.annaSolmu(0, 0).annaVaativuus());
         }
+    }
+
+    public void testEtaisyydenAsettamistaMaalista() {
+        char[][] t2 = {{'L', '.', '.'},
+                       {'.', '.', 'X'},
+                       {'.', '.', '.'}
+                       };
+        this.v = Verkkotoiminnot.luoVerkko(t2);
+        
+        assertEquals(1, this.v.annaSolmu(2, 2).annaEtaisyysMaalista());
+        assertEquals(2, this.v.annaSolmu(0, 1).annaEtaisyysMaalista());
+        assertEquals(3, this.v.annaSolmu(0, 0).annaEtaisyysMaalista());        
+    }
+    
+    public void testEiOleSolmuja(){
+        this.t[0][0] = '.';
+        this.v = Verkkotoiminnot.luoVerkko(t);
+        
+        assertEquals(null, this.v.annaSolmu(-1,0));
+        assertEquals(null, this.v.annaSolmu( 0,-1));
+        assertEquals(null, this.v.annaSolmu(-1,-1));
+        assertEquals(null, this.v.annaSolmu( 1,0));
+        assertEquals(null, this.v.annaSolmu( 0,1));
+        assertEquals(null, this.v.annaSolmu( 1,1));
     }
 }

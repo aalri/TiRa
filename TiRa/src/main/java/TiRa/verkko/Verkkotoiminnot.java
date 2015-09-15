@@ -61,7 +61,9 @@ public class Verkkotoiminnot {
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[0].length; j++) {
                 Solmu s = uusiverkko.annaSolmu(i, j);
+                if (s != null && maali != null){
                 s.asetaEtaisyysMaalista(Math.abs(s.annaX() - maali.annaX()) + Math.abs(s.annaY() - maali.annaY()));
+                }
             }
         }
         
