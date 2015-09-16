@@ -16,24 +16,36 @@ import tira.verkko.Verkkotoiminnot;
  */
 public class Polunetsija {
 
+    /**
+     * Metodi toimii käyttäjän toimintojen rajapintana samalla antaen
+     * käyttäjälle tilannepäivityksen ohjelman suorituksesta.
+     */
     public void aloita() {
         Tiedostonlukija t = new Tiedostonlukija();
         Syotteenlukija s = new Syotteenlukija();
         Tarkastaja tarkastaja = new Tarkastaja();
         String teksti;
         char[][] maasto;
-        
+
         if (s.annetaanTiedosto()) {
-            teksti = t.lueTiedosto("maasto.txt");
-            System.out.println(teksti);
-            if (tarkastaja.Tarkista(teksti)) {
-                maasto = s.muutaMaastoksi(teksti);
+            teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+            if (teksti != null) {
+                System.out.println(teksti);
+                if (tarkastaja.Tarkista(teksti)) {
+                    maasto = s.muutaMaastoksi(teksti);
 
-                maasto = this.etsiPolku(maasto);
-                System.out.println(this.tulostaMaasto(maasto));
+                    maasto = this.etsiPolku(maasto);
+                    if (maasto != null) {
+                        System.out.println(this.tulostaMaasto(maasto));
+                    } else {
+                        System.out.println("Reittiä ei löydetty!");
+                    }
 
+                } else {
+                    System.out.println(tarkastaja.annaVirhe());
+                }
             } else {
-                System.out.println(tarkastaja.annaVirhe());
+                System.out.println("Virhe! Sisaltöä ei löytynyt.");
             }
         }
 
@@ -54,6 +66,9 @@ public class Polunetsija {
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
         Solmu solmu = astar.etsiLyhin(verkko);
         while (solmu != verkko.annaLahto()) {
+            if (solmu == null) {
+                return null;
+            }
             maasto[solmu.annaX()][solmu.annaY()] = 'O';
             solmu = solmu.annaReitti();
         }

@@ -15,7 +15,7 @@ public class TarkastajaTest extends TestCase {
                       + "...\n"
                       + "A#X\n";
         assertEquals(false, this.t.Tarkista(teksti));
-        assertEquals(true, this.t.annaVirhe().equals("Merkkejä ei olla muodostettu tekstitiedostoon neliöllisesti!"));
+        assertEquals(true, this.t.annaVirhe().equals("Merkkijonon pituuden pitää olla sama kuin rivien määrän, jollain sivut ovat yhtä pitkiä.\nKorvaa tyhjät '#' merkillä!"));
         
     }
 

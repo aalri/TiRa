@@ -20,7 +20,8 @@ public class Tarkastaja {
      */
     public boolean Tarkista(String teksti) {
         if (!yhtaMontaRiviaKuinLeveyttaTeksti(teksti)) {
-            this.virhe = "Merkkejä ei olla muodostettu tekstitiedostoon neliöllisesti!";
+            this.virhe = "Merkkijonon pituuden pitää olla sama kuin rivien määrän, jollain sivut ovat yhtä pitkiä.\n"
+                       + "Korvaa tyhjät '#' merkillä!";
             return false;
         }
         if (!loytyyVainYksiLahto(teksti)) {
