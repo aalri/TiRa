@@ -20,7 +20,7 @@ public class Tarkastaja {
      */
     public boolean Tarkista(String teksti) {
         if (!yhtaMontaRiviaKuinLeveyttaTeksti(teksti)) {
-            this.virhe = "Merkkijonon pituuden pitää olla sama kuin rivien määrän, jollain sivut ovat yhtä pitkiä.\n"
+            this.virhe = "Merkkijonon pituuden pitää olla sama kuin rivien määrän, jolloin sivut ovat yhtä pitkiä.\n"
                        + "Korvaa tyhjät '#' merkillä!";
             return false;
         }
@@ -46,10 +46,15 @@ public class Tarkastaja {
     public boolean yhtaMontaRiviaKuinLeveyttaTeksti(String teksti) {
         Scanner lukija = new Scanner(teksti);
         int pituus = lukija.nextLine().length();
+        int korkeus = 1;
         while (lukija.hasNext()) {
+            korkeus ++;
             if (lukija.nextLine().length() != pituus) {
                 return false;
             }
+        }
+        if (korkeus != pituus){
+            return false;
         }
         return true;
     }

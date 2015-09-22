@@ -29,5 +29,5 @@ public class AstarTest extends TestCase {
         
         this.a.tarkistaOnkoNopeampi(sa, sb, k);
         assertEquals(null, sb.annaReitti());
-    }
+    }    
 }

@@ -298,13 +298,13 @@ public class MinimikekoTest extends TestCase{
         this.keko.syota(sa);
         this.keko.syota(sb);       
         
-        this.keko.vahennaSolmunEtaisyyttaKeossa(sb, 4);
-        assertEquals(6, sb.annaEtaisyys());
+        this.keko.vahennaSolmunEtaisyyttaKeossa(sb, 8);
+        assertEquals(8, sb.annaEtaisyys());
         assertEquals(sb,this.keko.keko[2]);
         assertEquals(sa,this.keko.keko[1]);
         
-        this.keko.vahennaSolmunEtaisyyttaKeossa(sb, 5);
-        assertEquals(6, sb.annaEtaisyys());
+        this.keko.vahennaSolmunEtaisyyttaKeossa(sb, 9);
+        assertEquals(8, sb.annaEtaisyys());
         assertEquals(sb,this.keko.keko[2]);
         assertEquals(sa,this.keko.keko[1]);
     }
@@ -348,6 +348,4 @@ public class MinimikekoTest extends TestCase{
         assertEquals(sa,this.keko.keko[3]);
         assertEquals(sc,this.keko.keko[1]);
     }
-    
-        
 }

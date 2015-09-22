@@ -244,10 +244,10 @@ public class Minimikeko {
      * @param etaisyys uusi arvo Solmussa olevan etaisyys arvon tilalle.
      */
     public void vahennaSolmunEtaisyyttaKeossa(Solmu solmu, int etaisyys) {
-        if (etaisyys + solmu.annaVaativuus() < solmu.annaEtaisyys()) {
+        if (etaisyys < solmu.annaTodellinenEtaisyys()) {
             solmu.asetaEtaisyys(etaisyys);
             int paikka = solmu.annaPaikkaKeossa();
-            while (paikka > 1 && etaisyys < this.keko[this.vanhempi(paikka)].annaEtaisyys()) {
+            while (paikka > 1 && solmu.annaEtaisyys() < this.keko[this.vanhempi(paikka)].annaEtaisyys()) {
                 this.vaihda(paikka, this.vanhempi(paikka));
                 paikka = this.vanhempi(paikka);
             }

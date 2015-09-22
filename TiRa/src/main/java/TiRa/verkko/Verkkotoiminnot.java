@@ -36,17 +36,19 @@ public class Verkkotoiminnot {
                             uusi.asetaVaativuus(5);
                             break;
                         case 'T':
-                            uusi.asetaVaativuus(4);
+                            uusi.asetaVaativuus(3);
                             break;
                         case '~':
                             uusi.asetaVaativuus(4);
                             break;
                         case 'X':
                             uusi.teeMaaliksi();
+                            uusi.asetaVaativuus(1);
                             maali = uusi;
                             break;
                         case 'L':
                             uusiverkko.asetaLahto(uusi);
+                            uusi.asetaVaativuus(1);
                             break;
                         case '#':
                             uusi.asetaEiKuljettavaksi();
@@ -66,7 +68,6 @@ public class Verkkotoiminnot {
                 }
             }
         }
-        
         
         return uusiverkko;
     }

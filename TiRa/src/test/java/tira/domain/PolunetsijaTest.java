@@ -17,7 +17,7 @@ public class PolunetsijaTest extends TestCase {
 
         maasto = p.etsiPolku(maasto);
 
-        String haluttu = "L#O\n"
+        String haluttu = "L#X\n"
                 + "O#O\n"
                 + "OOO\n";
 
@@ -34,7 +34,7 @@ public class PolunetsijaTest extends TestCase {
 
         String haluttu = "OOO\n"
                 + "O#O\n"
-                + "O#L\n";
+                + "X#L\n";
 
         assertEquals(haluttu, p.tulostaMaasto(maasto));
 
@@ -49,7 +49,7 @@ public class PolunetsijaTest extends TestCase {
 
         String haluttu = "OOL\n"
                 + "O##\n"
-                + "OOO\n";
+                + "OOX\n";
 
         assertEquals(haluttu, p.tulostaMaasto(maasto));
 
@@ -62,7 +62,7 @@ public class PolunetsijaTest extends TestCase {
 
         maasto = p.etsiPolku(maasto);
 
-        String haluttu = "OOO\n"
+        String haluttu = "XOO\n"
                 + "##O\n"
                 + "LOO\n";
 
@@ -86,15 +86,15 @@ public class PolunetsijaTest extends TestCase {
 
         maasto = p.etsiPolku(maasto);
 
-        String haluttu = ".......OOOOO\n"
-                + ".......O.A.A\n"
-                + ".....OOO.A..\n"
-                + "....OO....A.\n"
-                + "....O.....A.\n"
-                + "...OO.....A.\n"
-                + "..OO......A.\n"
-                + "OOO.......A.\n"
-                + "O.........A.\n"
+        String haluttu = "......OOOOOX\n"
+                + "......O..A.A\n"
+                + ".....OO..A..\n"
+                + ".....O....A.\n"
+                + ".....O....A.\n"
+                + ".....O....A.\n"
+                + ".....O....A.\n"
+                + ".....O....A.\n"
+                + "OOOOOO....A.\n"
                 + "O.........A.\n"
                 + "O.........A.\n"
                 + "L...........\n";
@@ -111,4 +111,5 @@ public class PolunetsijaTest extends TestCase {
         assertEquals("\n", p.tulostaMaasto(maasto));
 
     }
+
 }

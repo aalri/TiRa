@@ -24,7 +24,7 @@ public class VerkkotoiminnotTest extends TestCase {
 
         this.t[0][0] = 'T';
         this.v = Verkkotoiminnot.luoVerkko(t);
-        assertEquals(4, v.annaSolmu(0, 0).annaVaativuus());
+        assertEquals(3, v.annaSolmu(0, 0).annaVaativuus());
 
         this.t[0][0] = '~';
         this.v = Verkkotoiminnot.luoVerkko(t);
@@ -33,11 +33,11 @@ public class VerkkotoiminnotTest extends TestCase {
         this.t[0][0] = 'X';
         this.v = Verkkotoiminnot.luoVerkko(t);
         assertEquals(true, v.annaSolmu(0, 0).onMaali());
-        assertEquals(0, v.annaSolmu(0, 0).annaVaativuus());
+        assertEquals(1, v.annaSolmu(0, 0).annaVaativuus());
 
         this.t[0][0] = 'L';
         this.v = Verkkotoiminnot.luoVerkko(t);
-        assertEquals(0, v.annaSolmu(0, 0).annaVaativuus());
+        assertEquals(1, v.annaSolmu(0, 0).annaVaativuus());
 
         this.t[0][0] = '#';
         this.v = Verkkotoiminnot.luoVerkko(t);

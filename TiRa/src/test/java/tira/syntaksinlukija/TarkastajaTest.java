@@ -15,7 +15,17 @@ public class TarkastajaTest extends TestCase {
                       + "...\n"
                       + "A#X\n";
         assertEquals(false, this.t.Tarkista(teksti));
-        assertEquals(true, this.t.annaVirhe().equals("Merkkijonon pituuden pitää olla sama kuin rivien määrän, jollain sivut ovat yhtä pitkiä.\nKorvaa tyhjät '#' merkillä!"));
+        assertEquals(true, this.t.annaVirhe().equals("Merkkijonon pituuden pitää olla sama kuin rivien määrän, jolloin sivut ovat yhtä pitkiä.\nKorvaa tyhjät '#' merkillä!"));
+        
+    }
+    
+    public void testEiNeliollinen2() {
+        String teksti = "L..\n"
+                      + "...\n"
+                      + "...\n"
+                      + "A#X\n";
+        assertEquals(false, this.t.Tarkista(teksti));
+        assertEquals(true, this.t.annaVirhe().equals("Merkkijonon pituuden pitää olla sama kuin rivien määrän, jolloin sivut ovat yhtä pitkiä.\nKorvaa tyhjät '#' merkillä!"));
         
     }
 

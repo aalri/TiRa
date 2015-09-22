@@ -23,7 +23,7 @@ public class SolmuTest extends TestCase {
                 this.solmu.asetaVaativuus(j);
                 this.solmu.asetaEtaisyys(i);
                 assertEquals(j, this.solmu.vaativuus);
-                assertEquals(i + j, this.solmu.etaisyys);
+                assertEquals(i, this.solmu.etaisyys);
                 assertEquals(i + j, this.solmu.annaEtaisyys());
             }
         }

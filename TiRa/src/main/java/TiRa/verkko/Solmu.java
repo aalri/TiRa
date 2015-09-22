@@ -29,11 +29,22 @@ public class Solmu {
     }                
     
     public void asetaEtaisyys(int e){
-        this.etaisyys = e + this.vaativuus + this.etaisyysmaalista;
+        this.etaisyys = e;
     }
     public int annaEtaisyys(){
-        return this.etaisyys;
+        if (this.etaisyys == Integer.MAX_VALUE){
+            return this.etaisyys;
+        }
+        return this.etaisyys + this.vaativuus + this.etaisyysmaalista;
     }
+    
+    public int annaTodellinenEtaisyys(){
+        if (this.etaisyys == Integer.MAX_VALUE){
+            return this.etaisyys;
+        }
+        return this.etaisyys + this.vaativuus;
+    }
+    
     public void asetaEtaisyysMaalista(int e){
         this.etaisyysmaalista = e;
     }

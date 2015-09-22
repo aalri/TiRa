@@ -13,7 +13,6 @@ public class Astar {
     
 /**
  * Metodi etsii lyhimmän reitin lähdöstä maaliin käyttämällä Dijkstran algoritmia ja Minimikekoa.
- * Huom! Ei vielä Astar osuutta. Tulee pian!
  *
  * @param   verkko  Verkko josta etsitään lyhintä polkua lähdöstä maaliin
  * 
@@ -64,7 +63,7 @@ public class Astar {
 
     public void tarkistaOnkoNopeampi(Solmu a, Solmu b, Minimikeko keko) {
         if (a.annaEtaisyys() < b.annaEtaisyys()) {
-            keko.vahennaSolmunEtaisyyttaKeossa(b, a.annaEtaisyys());
+            keko.vahennaSolmunEtaisyyttaKeossa(b, (a.annaTodellinenEtaisyys()));
             b.asetaReitti(a);
         }
     }

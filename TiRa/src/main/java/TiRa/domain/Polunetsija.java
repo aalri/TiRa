@@ -30,10 +30,9 @@ public class Polunetsija {
         if (s.annetaanTiedosto()) {
             teksti = t.lueTiedosto(s.annaTiedostonPaikka());
             if (teksti != null) {
-                System.out.println(teksti);
                 if (tarkastaja.Tarkista(teksti)) {
                     maasto = s.muutaMaastoksi(teksti);
-
+                    System.out.println(this.tulostaMaasto(maasto));
                     maasto = this.etsiPolku(maasto);
                     if (maasto != null) {
                         System.out.println(this.tulostaMaasto(maasto));
@@ -65,11 +64,14 @@ public class Polunetsija {
         Astar astar = new Astar();
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
         Solmu solmu = astar.etsiLyhin(verkko);
+        
         while (solmu != verkko.annaLahto()) {
             if (solmu == null) {
                 return null;
             }
-            maasto[solmu.annaX()][solmu.annaY()] = 'O';
+            if (!solmu.onMaali()) {
+                maasto[solmu.annaX()][solmu.annaY()] = 'O';
+            }
             solmu = solmu.annaReitti();
         }
         return maasto;
