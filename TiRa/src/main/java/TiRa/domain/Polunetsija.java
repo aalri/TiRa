@@ -27,15 +27,20 @@ public class Polunetsija {
         String teksti;
         char[][] maasto;
 
-        if (s.annetaanTiedosto()) {
-            teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+        //if (s.annetaanTiedosto()) {
+        if (true) {
+            //teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+            teksti = t.lueTiedosto("maasto24x24k.txt");
             if (teksti != null) {
                 if (tarkastaja.Tarkista(teksti)) {
                     maasto = s.muutaMaastoksi(teksti);
-                    System.out.println(this.tulostaMaasto(maasto));
+                    //System.out.println(this.tulostaMaasto(maasto));
+                    long aikaAlussa = System.nanoTime();
                     maasto = this.etsiPolku(maasto);
+                    long aikaLopussa = System.nanoTime();
+                    System.out.println("KOKO Operaatioon kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
                     if (maasto != null) {
-                        System.out.println(this.tulostaMaasto(maasto));
+                        //System.out.println(this.tulostaMaasto(maasto));
                     } else {
                         System.out.println("Reittiä ei löydetty!");
                     }
@@ -64,7 +69,6 @@ public class Polunetsija {
         Astar astar = new Astar();
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
         Solmu solmu = astar.etsiLyhin(verkko);
-        
         while (solmu != verkko.annaLahto()) {
             if (solmu == null) {
                 return null;
@@ -89,6 +93,22 @@ public class Polunetsija {
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[0].length; j++) {
                 tulos = tulos + maasto[i][j];
+            }
+            tulos = tulos + "\n";
+        }
+        return tulos;
+    }
+
+    public String tulostaEtaisyydet(Solmu[][] solmuverkko) {
+        String tulos = "";
+        for (int i = 0; i < solmuverkko.length; i++) {
+            for (int j = 0; j < solmuverkko[0].length; j++) {
+                if (solmuverkko[i][j].annaEtaisyys() == Integer.MAX_VALUE) {
+                    tulos = tulos + "#, ";
+                } else {
+                    tulos = tulos + solmuverkko[i][j].annaEtaisyys() + ", ";
+                }
+
             }
             tulos = tulos + "\n";
         }

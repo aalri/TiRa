@@ -1,6 +1,7 @@
 package tira.domain;
 
 import junit.framework.TestCase;
+import tira.verkko.Solmu;
 
 /**
  *
@@ -109,6 +110,25 @@ public class PolunetsijaTest extends TestCase {
         maasto = p.etsiPolku(maasto);
 
         assertEquals("\n", p.tulostaMaasto(maasto));
+
+    }
+    
+    public void testEtaisyysarvot() {
+        
+        Solmu a = new Solmu(0, 0);
+        Solmu b = new Solmu(0, 1);
+        Solmu c = new Solmu(1, 0);
+        Solmu d = new Solmu(1, 1);
+        
+        a.asetaEtaisyys(2);
+        d.asetaEtaisyys(4);
+     
+        Solmu[][] solmuverkko = {{a, b},
+                                 {c, d}};
+      
+
+        assertEquals("2, #, \n"
+                   + "#, 4, \n", p.tulostaEtaisyydet(solmuverkko));
 
     }
 
