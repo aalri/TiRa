@@ -1,6 +1,9 @@
 package tira.lukijat;
 
 import java.util.Scanner;
+import tira.algoritmi.Algoritmi;
+import tira.algoritmi.Astar;
+import tira.algoritmi.Bellmanford;
 
 /**
  *
@@ -72,6 +75,30 @@ public class Syotteenlukija {
         }
 
         return paikka;
+    }
+    
+    /**
+     * Metodi pyytää käyttäjältä syötteenä polunetsinnassa käytettävän algoritmin.
+     *
+     *
+     * @return algoritmi, jota käytetään polunetsinnässä.
+     */
+    
+    public Algoritmi annetaanAlgoritmi() {
+        System.out.print("Valitse algoritmi\n"
+                         + "1 = Bellmanford\n"
+                         + "2 = Astar\n"
+                         + ": ");
+        this.lukija = new Scanner(System.in);
+        switch(this.lukija.nextLine()){
+            
+            case "1":
+                return new Bellmanford();
+            case "2":
+                return new Astar();
+                
+        }
+        return null;
     }
 
 }

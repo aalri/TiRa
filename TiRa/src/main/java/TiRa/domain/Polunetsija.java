@@ -1,6 +1,6 @@
 package tira.domain;
 
-import tira.algoritmi.Astar;
+import tira.algoritmi.Algoritmi;
 import tira.lukijat.Syotteenlukija;
 import tira.lukijat.Tiedostonlukija;
 import tira.syntaksinlukija.Tarkastaja;
@@ -20,6 +20,8 @@ public class Polunetsija {
      * Metodi toimii käyttäjän toimintojen rajapintana samalla antaen
      * käyttäjälle tilannepäivityksen ohjelman suorituksesta.
      */
+    Algoritmi algoritmi;
+
     public void aloita() {
         Tiedostonlukija t = new Tiedostonlukija();
         Syotteenlukija s = new Syotteenlukija();
@@ -27,33 +29,33 @@ public class Polunetsija {
         String teksti;
         char[][] maasto;
 
-        //if (s.annetaanTiedosto()) {
-        if (true) {
-            //teksti = t.lueTiedosto(s.annaTiedostonPaikka());
-            teksti = t.lueTiedosto("maasto24x24k.txt");
-            if (teksti != null) {
-                if (tarkastaja.Tarkista(teksti)) {
-                    maasto = s.muutaMaastoksi(teksti);
-                    //System.out.println(this.tulostaMaasto(maasto));
-                    long aikaAlussa = System.nanoTime();
-                    maasto = this.etsiPolku(maasto);
-                    long aikaLopussa = System.nanoTime();
-                    System.out.println("KOKO Operaatioon kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
-                    if (maasto != null) {
-                        //System.out.println(this.tulostaMaasto(maasto));
+        if (s.annetaanTiedosto()) {
+            if (true) {
+                teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+                this.algoritmi = s.annetaanAlgoritmi();
+                if (teksti != null) {
+                    if (tarkastaja.Tarkista(teksti, this.algoritmi)) {
+                        maasto = s.muutaMaastoksi(teksti);
+                        long aikaAlussa = System.nanoTime();
+                        maasto = this.etsiPolku(maasto);
+                        long aikaLopussa = System.nanoTime();
+                        System.out.println("KOKO Operaatioon kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
+                        if (maasto != null) {
+                            System.out.println(this.tulostaMaasto(maasto));
+                        } else {
+                            System.out.println(this.algoritmi.virhe());
+                        }
+
                     } else {
-                        System.out.println("Reittiä ei löydetty!");
+                        System.out.println(tarkastaja.annaVirhe());
                     }
-
                 } else {
-                    System.out.println(tarkastaja.annaVirhe());
+                    System.out.println("Virhe! Sisaltöä ei löytynyt.");
                 }
-            } else {
-                System.out.println("Virhe! Sisaltöä ei löytynyt.");
             }
-        }
 
-        System.out.println("Loppu");
+            System.out.println("Loppu");
+        }
     }
 
     /**
@@ -66,9 +68,8 @@ public class Polunetsija {
      * @return maasto, mihin on kirjattu lyhin polku.
      */
     public char[][] etsiPolku(char[][] maasto) {
-        Astar astar = new Astar();
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
-        Solmu solmu = astar.etsiLyhin(verkko);
+        Solmu solmu = this.algoritmi.etsiLyhin(verkko);
         while (solmu != verkko.annaLahto()) {
             if (solmu == null) {
                 return null;
@@ -99,6 +100,14 @@ public class Polunetsija {
         return tulos;
     }
 
+    /**
+     * Metodi muuntaa solmuverkon etaisyysarvoja kuvaavaksi merkkijonoksi ja
+     * palauttaa sen.
+     *
+     * @param solmuverkko solmuista tehty taulukko.
+     *
+     * @return merkkijono joka vastaa maaston etaisyysarvoja.
+     */
     public String tulostaEtaisyydet(Solmu[][] solmuverkko) {
         String tulos = "";
         for (int i = 0; i < solmuverkko.length; i++) {
@@ -113,6 +122,16 @@ public class Polunetsija {
             tulos = tulos + "\n";
         }
         return tulos;
+    }
+
+    /**
+     * Metodi asettaa algoritmin Polunetsijalle.
+     *
+     * @param algoritmi haluttu algoritmi.
+     *
+     */
+    public void asetaAlgoritmi(Algoritmi algoritmi) {
+        this.algoritmi = algoritmi;
     }
 
 }

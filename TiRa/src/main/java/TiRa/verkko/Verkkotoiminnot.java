@@ -12,13 +12,12 @@ public class Verkkotoiminnot {
      *
      * @param maasto merkeistä tehty taulukko, mikä kuvastaa maaston muotoja.
      *
-     * @return Verkko joka sisältää kaikki maaston merkeistä tehdyt solmut, ja
-     * lähtösolmun.
+     * @return Verkko joka sisältää kaikki maaston merkeistä tehdyt solmut,
+     * lähtösolmun ja maalisolmun.
      */
     public static Verkko luoVerkko(char[][] maasto) {
         Verkko uusiverkko = new Verkko();
         Solmu[][] solmutaulu = new Solmu[maasto.length][maasto[0].length];
-        Solmu maali = null;
 
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[i].length; j++) {
@@ -41,10 +40,13 @@ public class Verkkotoiminnot {
                         case '~':
                             uusi.asetaVaativuus(4);
                             break;
+                        case '-':
+                            uusi.asetaVaativuus(-1);
+                            break;
                         case 'X':
                             uusi.teeMaaliksi();
+                            uusiverkko.asetaMaali(uusi);
                             uusi.asetaVaativuus(1);
-                            maali = uusi;
                             break;
                         case 'L':
                             uusiverkko.asetaLahto(uusi);
@@ -60,16 +62,28 @@ public class Verkkotoiminnot {
             uusiverkko.asetaVerkko(solmutaulu);
         }
 
-        for (int i = 0; i < maasto.length; i++) {
-            for (int j = 0; j < maasto[0].length; j++) {
-                Solmu s = uusiverkko.annaSolmu(i, j);
-                if (s != null && maali != null){
-                s.asetaEtaisyysMaalista(Math.abs(s.annaX() - maali.annaX()) + Math.abs(s.annaY() - maali.annaY()));
+        return uusiverkko;
+    }
+    
+    /**
+     * Metodi asettaa verkon jokaiselle solmulle etäisyydet maalista.
+     *
+     * @param verkko joka sisältää kaikki maaston merkeistä tehdyt solmut,
+     * lähtösolmun ja maalisolmun.
+     *
+     */
+
+    public static void teeEtaisyydetMaalista(Verkko verkko) {
+        Solmu maali = verkko.annaMaali();
+        for (int i = 0; i < verkko.annaVerkko().length; i++) {
+            for (int j = 0; j < verkko.annaVerkko()[0].length; j++) {
+                Solmu s = verkko.annaSolmu(i, j);
+                if (s != null) {
+                    s.asetaEtaisyysMaalista(Math.abs(s.annaX() - maali.annaX()) + Math.abs(s.annaY() - maali.annaY()));
                 }
             }
         }
-        
-        return uusiverkko;
+
     }
-        
+
 }

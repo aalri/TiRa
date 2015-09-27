@@ -45,6 +45,7 @@
                 <configuration>
                     <targetClasses>
                         <param>tira.algoritmi.Astar</param>
+                        <param>tira.algoritmi.Bellmanford</param>
                         <param>tira.lukijat.Tiedostonlukija</param>
                         <param>tira.tietorakenteet.Minimikeko</param>
                         <param>tira.verkko.Verkkotoiminnot</param>
@@ -54,6 +55,7 @@
                     </targetClasses>
                     <targetTests>
                         <param>tira.algoritmi.AstarTest</param>
+                        <param>tira.algoritmi.BellmanfordTest</param>
                         <param>tira.domain.PolunetsijaTest</param>
                         <param>tira.lukijat.TiedostonlukijaTest</param>
                         <param>tira.tietorakenteet.MinimikekoTest</param>

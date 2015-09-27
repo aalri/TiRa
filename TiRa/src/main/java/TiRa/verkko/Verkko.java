@@ -8,6 +8,7 @@ package tira.verkko;
 public class Verkko {
     Solmu[][] verkko;
     Solmu lahto;
+    Solmu maali;
     
     public Verkko(){  
     }
@@ -23,6 +24,12 @@ public class Verkko {
     }
     public Solmu annaLahto(){
         return this.lahto;
+    }
+    public void asetaMaali(Solmu solmu){
+        this.maali = solmu;
+    }
+    public Solmu annaMaali(){
+        return this.maali;
     }
     
     public Solmu annaSolmu(int x, int y){

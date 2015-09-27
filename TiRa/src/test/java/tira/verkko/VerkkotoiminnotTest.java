@@ -57,6 +57,7 @@ public class VerkkotoiminnotTest extends TestCase {
                        {'.', '.', '.'}
                        };
         this.v = Verkkotoiminnot.luoVerkko(t2);
+        Verkkotoiminnot.teeEtaisyydetMaalista(v);
         
         assertEquals(1, this.v.annaSolmu(2, 2).annaEtaisyysMaalista());
         assertEquals(2, this.v.annaSolmu(0, 1).annaEtaisyysMaalista());

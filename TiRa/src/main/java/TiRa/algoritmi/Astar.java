@@ -3,13 +3,16 @@ package tira.algoritmi;
 import tira.tietorakenteet.Minimikeko;
 import tira.verkko.Solmu;
 import tira.verkko.Verkko;
+import tira.verkko.Verkkotoiminnot;
 
 /**
  * Luokka tekee Astar algoritmin operaatiot
  *
  * @author Riku
  */
-public class Astar {
+public class Astar implements Algoritmi {
+
+    String virhe;
 
     /**
      * Metodi etsii lyhimmän reitin lähdöstä maaliin käyttämällä Dijkstran
@@ -22,11 +25,15 @@ public class Astar {
     public Solmu etsiLyhin(Verkko verkko) {
         Solmu solmu;
         Solmu naapuri;
+
+        Verkkotoiminnot.teeEtaisyydetMaalista(verkko);
+
         Minimikeko keko = new Minimikeko();
         keko.syotaKaikki(verkko);
         while (keko.annaPienin() != null) {
             solmu = keko.poistaJaAnnaPienin();
             if (solmu.onMaali()) {
+                this.virhe = "Reittiä ei löydetty!";
                 return solmu;
             }
             naapuri = verkko.annaSolmu(solmu.annaX() - 1, solmu.annaY());
@@ -65,5 +72,23 @@ public class Astar {
             keko.vahennaSolmunEtaisyyttaKeossa(b, (a.annaTodellinenEtaisyys()));
             b.asetaReitti(a);
         }
+    }
+
+    /**
+     * Metodi palauttaa virhe merkkijonon.
+     *
+     * @return virhe merkkijono.
+     */
+    public String virhe() {
+        return this.virhe;
+    }
+
+    /**
+     * Metodi palauttaa algoritmin nimen.
+     *
+     * @return nimi merkkijono.
+     */
+    public String annaNimi() {
+        return "Astar";
     }
 }

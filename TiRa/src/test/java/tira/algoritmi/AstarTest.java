@@ -4,8 +4,6 @@ package tira.algoritmi;
 import junit.framework.TestCase;
 import tira.tietorakenteet.Minimikeko;
 import tira.verkko.Solmu;
-import tira.verkko.Verkko;
-import tira.verkko.Verkkotoiminnot;
 
 /**
  *
@@ -13,9 +11,7 @@ import tira.verkko.Verkkotoiminnot;
  */
 public class AstarTest extends TestCase {
     Astar a = new Astar();
-    Verkko v;
     Minimikeko k = new Minimikeko();
-    char[][] t = {{'L','.'},{'.','X'}};
     
     public void testTarkistaOnkoNopeampiTasaArvoisina(){
         Solmu sa = new Solmu(1,1);
@@ -30,4 +26,9 @@ public class AstarTest extends TestCase {
         this.a.tarkistaOnkoNopeampi(sa, sb, k);
         assertEquals(null, sb.annaReitti());
     }    
+    
+    public void testAnnaNimi(){
+        assertEquals("Astar", a.annaNimi());
+    } 
+    
 }

@@ -31,6 +31,9 @@ public class Solmu {
     public void asetaEtaisyys(int e){
         this.etaisyys = e;
     }
+    
+    
+    
     public int annaEtaisyys(){
         if (this.etaisyys == Integer.MAX_VALUE){
             return this.etaisyys;
