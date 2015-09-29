@@ -1,6 +1,7 @@
 package tira.domain;
 
 import tira.algoritmi.Algoritmi;
+import tira.algoritmi.Bellmanford;
 import tira.lukijat.Syotteenlukija;
 import tira.lukijat.Tiedostonlukija;
 import tira.syntaksinlukija.Tarkastaja;
@@ -29,10 +30,12 @@ public class Polunetsija {
         String teksti;
         char[][] maasto;
 
-        if (s.annetaanTiedosto()) {
+        //if (s.annetaanTiedosto()) {
             if (true) {
-                teksti = t.lueTiedosto(s.annaTiedostonPaikka());
-                this.algoritmi = s.annetaanAlgoritmi();
+                teksti = t.lueTiedosto("maasto24x24k.txt");
+                //teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+                this.algoritmi = new Bellmanford();
+                //this.algoritmi = s.annetaanAlgoritmi();
                 if (teksti != null) {
                     if (tarkastaja.Tarkista(teksti, this.algoritmi)) {
                         maasto = s.muutaMaastoksi(teksti);
@@ -41,7 +44,7 @@ public class Polunetsija {
                         long aikaLopussa = System.nanoTime();
                         System.out.println("KOKO Operaatioon kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
                         if (maasto != null) {
-                            System.out.println(this.tulostaMaasto(maasto));
+                            //System.out.println(this.tulostaMaasto(maasto));
                         } else {
                             System.out.println(this.algoritmi.virhe());
                         }
@@ -56,7 +59,7 @@ public class Polunetsija {
 
             System.out.println("Loppu");
         }
-    }
+    //}
 
     /**
      * Metodi laittaa Astar luokan etsimään lyhimmän polun lähdöstä maaliin
@@ -69,7 +72,10 @@ public class Polunetsija {
      */
     public char[][] etsiPolku(char[][] maasto) {
         Verkko verkko = Verkkotoiminnot.luoVerkko(maasto);
+        long aikaAlussa = System.nanoTime();
         Solmu solmu = this.algoritmi.etsiLyhin(verkko);
+        long aikaLopussa = System.nanoTime();
+        System.out.println("Algoritmiin kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
         while (solmu != verkko.annaLahto()) {
             if (solmu == null) {
                 return null;
