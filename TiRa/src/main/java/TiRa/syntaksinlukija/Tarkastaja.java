@@ -21,6 +21,10 @@ public class Tarkastaja {
      * @return totuusarvo syntaksin vastaavuudesta
      */
     public boolean Tarkista(String teksti, Algoritmi algoritmi) {
+        if (teksti == null){
+            this.virhe = "Tekstitiedostoa ei löytynyt. Tarkista oikeinkirjoitus";
+            return false;
+        }
         
         if (!vainSyntaksinMerkkeja(teksti)){
             this.virhe = "Merkeistä löytyi sinne kuulumattomia merkkejä! Korvaa tyhjät '#' merkillä!";

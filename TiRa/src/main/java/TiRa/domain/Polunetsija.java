@@ -16,12 +16,14 @@ import tira.verkko.Verkkotoiminnot;
  *
  */
 public class Polunetsija {
+    
+    Algoritmi algoritmi;
+    double kulunutaika = 0;
 
     /**
      * Metodi toimii käyttäjän toimintojen rajapintana samalla antaen
      * käyttäjälle tilannepäivityksen ohjelman suorituksesta.
-     */
-    Algoritmi algoritmi;
+     */    
 
     public void aloita() {
         Tiedostonlukija t = new Tiedostonlukija();
@@ -30,13 +32,9 @@ public class Polunetsija {
         String teksti;
         char[][] maasto;
 
-        //if (s.annetaanTiedosto()) {
-            if (true) {
-                teksti = t.lueTiedosto("maasto24x24k.txt");
-                //teksti = t.lueTiedosto(s.annaTiedostonPaikka());
-                this.algoritmi = new Bellmanford();
-                //this.algoritmi = s.annetaanAlgoritmi();
-                if (teksti != null) {
+                teksti = t.lueTiedosto(s.annaTiedostonPaikka());
+                this.algoritmi = s.annetaanAlgoritmi();
+                if (teksti != null && this.algoritmi != null) {
                     if (tarkastaja.Tarkista(teksti, this.algoritmi)) {
                         maasto = s.muutaMaastoksi(teksti);
                         long aikaAlussa = System.nanoTime();
@@ -53,9 +51,8 @@ public class Polunetsija {
                         System.out.println(tarkastaja.annaVirhe());
                     }
                 } else {
-                    System.out.println("Virhe! Sisaltöä ei löytynyt.");
+                    System.out.println("Virhe! Sisältöä ei löytynyt.");
                 }
-            }
 
             System.out.println("Loppu");
         }
@@ -75,7 +72,7 @@ public class Polunetsija {
         long aikaAlussa = System.nanoTime();
         Solmu solmu = this.algoritmi.etsiLyhin(verkko);
         long aikaLopussa = System.nanoTime();
-        System.out.println("Algoritmiin kului aikaa: " + (double) (aikaLopussa - aikaAlussa) / (double) 1000000 + "ms.");
+        this.kulunutaika = (double) (aikaLopussa - aikaAlussa) / (double) 1000000;        
         while (solmu != verkko.annaLahto()) {
             if (solmu == null) {
                 return null;
@@ -138,6 +135,16 @@ public class Polunetsija {
      */
     public void asetaAlgoritmi(Algoritmi algoritmi) {
         this.algoritmi = algoritmi;
+    }
+
+    /**
+     * Metodi palauttaa algoritmin suoritukseen kuluneen ajan.
+     *
+     * @return kulunut aika.
+     *
+     */    
+    public double annaKulunutAika() {
+        return this.kulunutaika;
     }
 
 }

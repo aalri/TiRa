@@ -84,6 +84,12 @@ public class TarkastajaTest extends TestCase {
         
     }
     
+    public void testOlematon() {
+        String teksti = null;
+        assertEquals(false, this.t.Tarkista(teksti, a));
+        assertEquals(true, this.t.annaVirhe().equals("Tekstitiedostoa ei löytynyt. Tarkista oikeinkirjoitus"));
+    }
+    
     public void testHyvaksyttava() {
         String teksti = "X..\n"
                 + "...\n"

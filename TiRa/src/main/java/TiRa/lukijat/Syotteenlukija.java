@@ -100,5 +100,24 @@ public class Syotteenlukija {
         }
         return null;
     }
+    
+    /**
+     * Metodi palauttaa algoritmin, joka vastaa int arvoa.
+     *
+     *
+     * @return algoritmi, jota käytetään polunetsinnässä.
+     */
+    
+    public Algoritmi annaUIAlgoritmi(int arvo) {
+        switch(arvo){
+            
+            case 0:
+                return new Astar();
+            case 1:
+                return new Bellmanford();           
+                
+        }
+        return null;
+    }
 
 }
