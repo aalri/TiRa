@@ -42,12 +42,13 @@ public class LuoReitti implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-
-        String syote = this.syoteAlue.getText();
+              
+        Tiedostonlukija tiedostonlukija = new Tiedostonlukija();
         Syotteenlukija syotteenlukija = new Syotteenlukija();
 
-        Tiedostonlukija tiedostonlukija = new Tiedostonlukija();
-        syote = tiedostonlukija.lueTiedosto(syote);
+        String syote = this.syoteAlue.getText();       
+        
+        syote = tiedostonlukija.lueTiedosto(syote);       
 
         Algoritmi algoritmi = syotteenlukija.annaUIAlgoritmi(this.algoritmilista.getSelectedIndex());
 

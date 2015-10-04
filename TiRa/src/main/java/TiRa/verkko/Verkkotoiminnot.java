@@ -22,7 +22,7 @@ public class Verkkotoiminnot {
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[i].length; j++) {
                 Solmu uusi = new Solmu(i, j);
-                if (Character.isDigit(maasto[i][j])) {
+                if (Character.isDigit(maasto[i][j])&& maasto[i][j] != 0) {
                     uusi.asetaVaativuus(Integer.parseInt(String.valueOf(maasto[i][j])));
 
                 } else {

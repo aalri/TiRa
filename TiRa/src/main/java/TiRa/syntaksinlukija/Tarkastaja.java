@@ -139,7 +139,7 @@ public class Tarkastaja {
 
         Scanner lukija = new Scanner(teksti);
         String rivi;
-        char[] merkit = {'.', 'A', 'T', '~', '-', 'X', 'L', '#', '0', '1',
+        char[] merkit = {'.', 'A', 'T', '~', '-', 'X', 'L', '#', '1',
                          '2', '3', '4', '5', '6', '7','8', '9'};
         while (lukija.hasNextLine()) {
             rivi = lukija.nextLine();

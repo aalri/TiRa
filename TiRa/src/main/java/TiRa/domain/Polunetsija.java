@@ -1,7 +1,6 @@
 package tira.domain;
 
 import tira.algoritmi.Algoritmi;
-import tira.algoritmi.Bellmanford;
 import tira.lukijat.Syotteenlukija;
 import tira.lukijat.Tiedostonlukija;
 import tira.syntaksinlukija.Tarkastaja;
@@ -56,10 +55,10 @@ public class Polunetsija {
 
             System.out.println("Loppu");
         }
-    //}
 
     /**
-     * Metodi laittaa Astar luokan etsimään lyhimmän polun lähdöstä maaliin
+     * Metodi laittaa Verkkotoiminnot tekemään maastosta verkon, minkä jälkeen
+     * laittaa sille annetun algoritmin etsimään lyhimmän polun lähdöstä maaliin
      * syntaksia vastaavasta merkeistä tehdystä maastosta. Tämän jälkeen kirjaa
      * polun maastoon ja palauttaa sen.
      *
