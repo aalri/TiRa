@@ -12,19 +12,15 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
- *
- * @author Riku
- */
-public class Kayttoliittyma implements Runnable {
-
-    private JFrame frame;
-    
-/**
  * Luokka muodostaa käyttöliittymän
  *
  * @author Riku
  *
  */
+public class Kayttoliittyma implements Runnable {
+
+    private JFrame frame;
+    
 
     public Kayttoliittyma() {
     }
@@ -41,6 +37,12 @@ public class Kayttoliittyma implements Runnable {
         frame.pack();
         frame.setVisible(true);
     }
+    
+    /**
+     * 
+     * Luo käyttöliittymän sisällä esiintyvät ikkunat ja muut osat.
+     * @param container käyttöliittymän sisältö.
+     */
 
     private void luoKomponentit(Container container) {
         container.setBackground(Color.LIGHT_GRAY);
