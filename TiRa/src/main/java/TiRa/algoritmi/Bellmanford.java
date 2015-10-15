@@ -46,6 +46,7 @@ public class Bellmanford implements Algoritmi {
                         if (naapuri != null && naapuri.annaKuljettava() != false) {
                             this.tarkistaOnkoNopeampi(solmu, naapuri);
                         }
+                        
                     }
                 }
             }

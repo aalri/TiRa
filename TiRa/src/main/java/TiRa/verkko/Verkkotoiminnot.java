@@ -22,7 +22,7 @@ public class Verkkotoiminnot {
         for (int i = 0; i < maasto.length; i++) {
             for (int j = 0; j < maasto[i].length; j++) {
                 Solmu uusi = new Solmu(i, j);
-                if (Character.isDigit(maasto[i][j])&& maasto[i][j] != 0) {
+                if (Character.isDigit(maasto[i][j]) && maasto[i][j] != 0) {
                     uusi.asetaVaativuus(Integer.parseInt(String.valueOf(maasto[i][j])));
 
                 } else {
@@ -64,7 +64,7 @@ public class Verkkotoiminnot {
 
         return uusiverkko;
     }
-    
+
     /**
      * Metodi asettaa verkon jokaiselle solmulle etäisyydet maalista.
      *
@@ -72,7 +72,6 @@ public class Verkkotoiminnot {
      * lähtösolmun ja maalisolmun.
      *
      */
-
     public static void teeEtaisyydetMaalista(Verkko verkko) {
         Solmu maali = verkko.annaMaali();
         for (int i = 0; i < verkko.annaVerkko().length; i++) {
@@ -85,5 +84,6 @@ public class Verkkotoiminnot {
         }
 
     }
+
 
 }

@@ -12,7 +12,7 @@ import tira.verkko.Verkkotoiminnot;
  */
 public class Astar implements Algoritmi {
 
-    String virhe;
+    String virhe = "Reittiä ei löydetty!";
 
     /**
      * Metodi etsii lyhimmän reitin lähdöstä maaliin käyttämällä Dijkstran
@@ -25,7 +25,7 @@ public class Astar implements Algoritmi {
     public Solmu etsiLyhin(Verkko verkko) {
         Solmu solmu;
         Solmu naapuri;
-
+        
         Verkkotoiminnot.teeEtaisyydetMaalista(verkko);
 
         Minimikeko keko = new Minimikeko();
@@ -33,7 +33,6 @@ public class Astar implements Algoritmi {
         while (keko.annaPienin() != null) {
             solmu = keko.poistaJaAnnaPienin();
             if (solmu.onMaali()) {
-                this.virhe = "Reittiä ei löydetty!";
                 return solmu;
             }
             naapuri = verkko.annaSolmu(solmu.annaX() - 1, solmu.annaY());
